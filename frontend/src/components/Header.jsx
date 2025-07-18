@@ -12,33 +12,36 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
-const pages = ['Home', 'Recets', 'About', 'Contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const pages = ['Home', 'Career', 'SignUp', 'Login'];
 
 function ComponenteEncabezado() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
+    
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
+    
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: '#333' }}>
+        <AppBar 
+            position="static" 
+            sx={{ 
+                backgroundColor: '#333',
+                boxShadow: 'none',
+                borderBottom: 'none'
+            }}
+        >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -57,7 +60,7 @@ function ComponenteEncabezado() {
                             textDecoration: 'none',
                         }}
                     >
-                        WikiFood
+                        Academic System
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -111,53 +114,25 @@ function ComponenteEncabezado() {
                             textDecoration: 'none',
                         }}
                     >
-                        WikiFood
+                        Academic System
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
 
                         <Button component={Link} to='/' onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mx: 2 }} >
                             <Typography color="white">Home</Typography>
                         </Button>
-                        <Button component={Link} to='/recetas' onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mx: 2 }}>
-                            <Typography color="white">Recets</Typography>
+                        <Button component={Link} to='/career' onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mx: 2 }}>
+                            <Typography color="white">Career</Typography>
                         </Button>
-                        <Button component={Link} to='/about' onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mx: 2 }}>
-                            <Typography color="white">About</Typography>
+                        <Button component={Link} to='/login' onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mx: 2 }}>
+                            <Typography color="white">Login</Typography>
                         </Button>
-                        <Button component={Link} to='/contact' onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mx: 2 }}>
-                            <Typography color="white">Contact</Typography>
+                        <Button component={Link} to='/signup' onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block', mx: 2 }}>
+                            <Typography color="white">Sign Up</Typography>
                         </Button>
 
                     </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
+                    
                 </Toolbar>
             </Container>
         </AppBar>
